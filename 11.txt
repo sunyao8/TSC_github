@@ -1,0 +1,32 @@
+	
+		 if(!(flag_phase==1))
+		  {
+
+			do
+			{	
+				u16 i;
+				for(i=0;i<295;i++)
+				{
+				adcx=Get_Adc(ADC_CH4);				
+				delay_us(50);				
+										 
+					 if(adcx>adcxm )
+					  adcxm=adcx ;					
+				}											
+			}while(!(adcxm>0XBA2));
+
+				do adcx=Get_Adc(ADC_CH4);								
+					while(!(adcx>=adcxm/100*95));	//  *9/10
+
+					do
+					{
+					   tim_phase++;
+					   delay_ms(1);
+					} while(!(KEYV==1));
+
+					flag_phase=1;
+					tim_phase/=20;
+					if(tim_phase>6)
+					flag_work=1;
+
+		   }

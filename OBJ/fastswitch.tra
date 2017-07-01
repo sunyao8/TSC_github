@@ -1,0 +1,29 @@
+*** Creating Trace Output File '..\OBJ\fastswitch.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"..\obj\stm32f10x.o"'
+### List of Objects: adding '"..\obj\adc.o"'
+### List of Objects: adding '"..\obj\exti.o"'
+### List of Objects: adding '"..\obj\key.o"'
+### List of Objects: adding '"..\obj\led.o"'
+### List of Objects: adding '"..\obj\timer.o"'
+### List of Objects: adding '"..\obj\ds18b20.o"'
+### List of Objects: adding '"..\obj\delay.o"'
+### List of Objects: adding '"..\obj\sys.o"'
+### List of Objects: adding '"..\obj\usart.o"'
+### List of Objects: adding '"..\obj\fastswitch.o"'
+### ADS-LD Command completed:
+--device DARMSTM "..\obj\stm32f10x.o" "..\obj\adc.o" "..\obj\exti.o" "..\obj\key.o" "..\obj\led.o" "..\obj\timer.o" "..\obj\ds18b20.o" "..\obj\delay.o" "..\obj\sys.o" "..\obj\usart.o" "..\obj\fastswitch.o" --strict --scatter "..\OBJ\fastswitch.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list "..\OBJ\fastswitch.map" -o "..\OBJ\fastswitch.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '..\OBJ\fastswitch.axf'
+### ADS-LD Command File: '..\OBJ\fastswitch.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '..\OBJ\fastswitch.lnp', Handle=0x00000784
+### Writing '.lnp' file
+### ADS-LD Command file '..\OBJ\fastswitch.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
