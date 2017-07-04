@@ -19,8 +19,16 @@
 
 //外部中断10服务程序
  //extern u8 mutex;	 
+
+ extern u8 flag_xu;
+volatile u8 key_xb=0;
+ volatile u8 flag=0;
+ extern u8 mutex;
 void EXTI15_10_IRQHandler(void)
 {	
+
+if(flag_xu==0)
+{
 	if(KEYV==1)
 	{
 	delay_us(1000);	
@@ -29,6 +37,22 @@ void EXTI15_10_IRQHandler(void)
 	}
 	  EXTI->PR=1<<10;     //清除LINE10上的中断标志位  
 //     mutex=0;
+}
+if(flag_xu==1)
+{
+{	
+	delay_us(1000);		
+	if(KEYV==1)
+	{
+	 TIM3->CCR3=490;
+	 TIM3->CCR4=490;
+	}
+   
+	EXTI->PR=1<<10;     //清除LINE10上的中断标志位  
+    key_xb=1; 
+   mutex=0;
+}
+}
 
 }
 //外部中断初始化程序

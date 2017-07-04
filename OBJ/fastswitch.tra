@@ -20,7 +20,7 @@
 ### ADS-LD Output File: '..\OBJ\fastswitch.axf'
 ### ADS-LD Command File: '..\OBJ\fastswitch.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '..\OBJ\fastswitch.lnp', Handle=0x00000784
+### Creating CmdFile '..\OBJ\fastswitch.lnp', Handle=0x00000CB4
 ### Writing '.lnp' file
 ### ADS-LD Command file '..\OBJ\fastswitch.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
