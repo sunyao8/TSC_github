@@ -1,0 +1,1 @@
+-c --device DARMSTM -D__EVAL -g -O0 --apcs=interwork -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\KEY -I..\HARDWARE\LED -I..\HARDWARE\TIMER -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\HARDWARE\DS18B20 -I "d:\Keil3\ARM\INC\ST\STM32F10x" -o "..\OBJ\ds18b20.o" --omf_browse "..\OBJ\ds18b20.crf" --depend "..\OBJ\ds18b20.d" "..\HARDWARE\DS18B20\ds18b20.c"

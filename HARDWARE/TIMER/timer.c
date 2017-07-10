@@ -59,22 +59,7 @@ void PWM_Init(u16 arr,u16 psc)
 	RCC->APB1ENR|=1<<1;       //TIM3时钟使能    
 
 	
-	GPIOA->CRL&=0XF0FFFFFF;//PA6输出
-	GPIOA->CRL|=0X0B000000;//复用功能输出 	  
-	GPIOA->ODR|=1<<6;//PA6上拉 
-	 	
-	GPIOA->CRL&=0X0FFFFFFF;//PA7输出
-	GPIOA->CRL|=0XB0000000;//复用功能输出 	  
-	GPIOA->ODR|=1<<7;//PA7上拉
 	
-	RCC->APB2ENR|=1<<3;       //PB时钟使能
-	GPIOB->CRL&=0XFFFFFFF0;//PB0输出
-	GPIOB->CRL|=0X0000000B;//复用功能输出 	  
-	GPIOB->ODR|=1;//PB0上拉 
-	 	
-	GPIOB->CRL&=0XFFFFFF0F;//PB1输出
-	GPIOB->CRL|=0X000000B0;//复用功能输出 	  
-	GPIOB->ODR|=1<<1;//PB1上拉	
 
 	TIM3->ARR=arr;//设定计数器自动重装值 
 	TIM3->PSC=psc;//预分频器不分频

@@ -1,0 +1,12 @@
+---- LEDF Matches (11 in 2 files) ----
+Fastswitch.c (user):		LEDF=1;
+Fastswitch.c (user):	LEDF=0;
+Fastswitch.c (user)://	LEDF=1;
+Fastswitch.c (user)://	LEDF=0;
+Fastswitch.c (user):			 LEDF=1;
+Fastswitch.c (user):			 LEDF=0;
+Fastswitch.c (user)://	LEDF=1;
+Fastswitch.c (user)://	LEDF=0;
+Fastswitch.c (user):			 LEDF=1;
+Fastswitch.c (user):			 LEDF=0;
+Led.h (hardware\led):#define LEDF PBout(12)// PB12∑Á…»÷∏ æ

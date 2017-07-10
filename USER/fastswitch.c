@@ -31,20 +31,39 @@ int main(void)
 	KEY_Init();
 	LED_Init();
 	PWM_Init(5400,0);
-	Timer4_Init(10,7199);//2s
-	EXTIX_Init();		 		//外部中断初始化	
+	Timer4_Init(10,7199);//2//10对应1ms
+       EXTIX_Init();		 		//外部中断初始化	
 	LEDP=0;	 //电源指示亮
-	LEDF=0;
+		LEDF=1;//风机开
 	while(KEYV_A==1&&KEYV==1)break;
 	for(j=0;j<25;j++)delay_ms(1000);
-
+{
+GPIOA->CRL&=0XF0FFFFFF;//PA6输出
+	GPIOA->CRL|=0X0B000000;//复用功能输出 	  
+	GPIOA->ODR|=1<<6;//PA6上拉 
+	 	
+	GPIOA->CRL&=0X0FFFFFFF;//PA7输出
+	GPIOA->CRL|=0XB0000000;//复用功能输出 	  
+	GPIOA->ODR|=1<<7;//PA7上拉
 	
+	RCC->APB2ENR|=1<<3;       //PB时钟使能
+	GPIOB->CRL&=0XFFFFFFF0;//PB0输出
+	GPIOB->CRL|=0X0000000B;//复用功能输出 	  
+	GPIOB->ODR|=1;//PB0上拉 
+	 	
+	GPIOB->CRL&=0XFFFFFF0F;//PB1输出
+	GPIOB->CRL|=0X000000B0;//复用功能输出 	  
+	GPIOB->ODR|=1<<1;//PB1上拉	
+}	//pwm 初始化管脚
+
+
  flag_xu=distin_A_C();// 0为正相序
 
 while(DS18B20_Init())
 {
 
 }
+            LEDF=0;//风机关
 
 	delay_ms(1000);
 if(flag_xu==0)//0 为正相序，1为反相序
