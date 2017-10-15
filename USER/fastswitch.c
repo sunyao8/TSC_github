@@ -59,11 +59,15 @@ GPIOA->CRL&=0XF0FFFFFF;//PA6输出
 
  flag_xu=distin_A_C();// 0为正相序
 
-while(DS18B20_Init())
+/* 
+
+while(DS18B20_Init())  //smartdust 产品没有温度传感器
 {
 
 }
-            LEDF=0;//风机关
+
+*/
+			LEDF=0;//风机关
 
 	delay_ms(1000);
 if(flag_xu==0)//0 为正相序，1为反相序
@@ -99,8 +103,6 @@ if(flag_xu==0)//0 为正相序，1为反相序
 				   if(adcxm>450)						  //模拟信号数值为1时
 					 {
 						u16 i;
-//						 mutex=1;
-					 //	EXTIX_Init();				 //	正相序系统数字量先投，模拟量后投
 					 	EXTI->IMR|=1<<10;//  开启line BITx上的中断
 						delay_ms(20);
 
@@ -122,8 +124,6 @@ if(flag_xu==0)//0 为正相序，1为反相序
 					if(adcxm<=450)			  	 ////模拟信号数值为0时
 					{
 					    u16 i;
-					//	EXTIX_Init();		 		//外部中断初始化，投入数值量
-//							mutex=1;				
 						EXTI->IMR|=1<<10;//  开启line BITx上的中断
 							for(i=0;i<295;i++)
 							{	
@@ -140,7 +140,6 @@ if(flag_xu==0)//0 为正相序，1为反相序
 							  delay_us(50);
 							}
 					 }
-				//	adcxm=0;
 				}				
 			}	
 							
@@ -161,37 +160,8 @@ if(flag_xu==0)//0 为正相序，1为反相序
 		  TIM3->CCR2=0;
 		  TIM3->CCR3=0;
 		  TIM3->CCR4=0; 
-//		  	mutex=0;
 		}
  
-//	  	  	 if(mutex==0)
-//		{	 
-//		   adctemp=0;
-//		 for(t=0;t<10;t++)
-//		 {
-//		 adctemp+=Get_Adc(ADC_CH2);
-//		 delay_ms(1);
-//	   }
-//		adctemp=adctemp/10;
-//	   adctemp=adctemp*330/4096;
-//	   } 	
-
-
-//	if(adctemp<0x80)		//风机开 25	 5E-55
-//	LEDF=1;
-//	if(adctemp<0x4C)	  //报警开   44-73.3 	  67
-//	{
-//	LEDA=0;
-//	flagtemp=0;
-//	}
-//	if(adctemp>0x56)	 //报警关 	50-69	 6a
-//	{
-//	LEDA=1;
-//	flagtemp=1;
-//	}
-//	if(adctemp>0x93)	//风机关 15
-//	LEDF=0;
-
 
 		if(t%100==0)//每100ms读取一次
 		{									  
@@ -225,6 +195,7 @@ if(flag_xu==0)//0 为正相序，1为反相序
 		{
 			t=0;
 		}
+
 
 	  }	 
 
@@ -339,35 +310,8 @@ else if(flag_xu==1)   //反相序
 		  TIM3->CCR2=0;
 		  TIM3->CCR3=0;
 		  TIM3->CCR4=0; 
-	//	  mutex=0; //timer4中断进行互斥变量
 		}
-//	  	 if(mutex==0)
-//		{	 
-//		   adctemp=0;
-//		 for(t=0;t<10;t++)
-//		 {
-//		 adctemp+=Get_Adc(ADC_CH2);
-//		 delay_ms(1);
-//	   }
-//		adctemp=adctemp/10;
-//	   adctemp=adctemp*330/4096;
-//	   } 	
-//	
-//	if(adctemp<0x80)		//风机开 25	 5E-55
-//	LEDF=1;
-//	if(adctemp<0x4C)	  //报警开   44-73.3 	  67
-//	{
-//	LEDA=0;
-//	flagtemp=0;
-//	}
-//	if(adctemp>0x56)	 //报警关 	50-69	 6a
-//	{
-//	LEDA=1;
-//	flagtemp=1;
-//	}
-//	if(adctemp>0x93)	//风机关 15
-//	LEDF=0;
-//  
+
 	if(t%100==0)//每100ms读取一次
 		{									  
 			temperature=DS18B20_Get_Temp();	
@@ -400,6 +344,8 @@ else if(flag_xu==1)   //反相序
 		{
 			t=0;
 		}
+
+
 	  }
 
 
